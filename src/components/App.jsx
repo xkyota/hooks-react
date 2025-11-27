@@ -35,7 +35,7 @@ const App = () => {
 	return (
 		<>
 			<form onSubmit={addContact}>
-				<p>Input Name & Surname</p>
+				<label>Input Name & Surname</label>
 				<input
 					id="inputName"
 					type="text"
@@ -45,7 +45,7 @@ const App = () => {
 					required
 				/>
 
-				<p>Input Phone Number</p>
+				<label>Input Phone Number</label>
 				<input
 					id="inputNumber"
 					type="tel"
