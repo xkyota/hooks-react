@@ -1,0 +1,202 @@
+/*! Styles by Copilot */
+
+
+
+/* Theme variables */
+:root{
+    --bg-1: #0f1724;
+    --bg-2: #0b1020;
+    --card-bg: rgba(255,255,255,0.06);
+    --glass: rgba(255,255,255,0.06);
+    --accent: #6ee7b7;
+    --accent-2: #60a5fa;
+    --muted: rgba(255,255,255,0.7);
+    --soft: rgba(255,255,255,0.04);
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.08), transparent 8%),
+                            radial-gradient(1000px 500px at 90% 90%, rgba(110,231,183,0.06), transparent 6%),
+                            linear-gradient(180deg, var(--bg-1), var(--bg-2));
+    color: #ecf0f6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px 20px;
+    gap:24px;
+}
+
+/* Layout wrapper inferred from document structure (fragment root) */
+form{
+    width:100%;
+    max-width:520px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:14px;
+    padding:28px;
+    box-shadow: 0 8px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.03);
+    backdrop-filter: blur(8px) saturate(120%);
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+form:hover{ transform: translateY(-4px); box-shadow: 0 18px 40px rgba(2,6,23,0.7); }
+
+/* Labels / small paragraphs */
+form > p{
+    margin:0 0 8px 0;
+    font-size:13px;
+    color:var(--muted);
+    letter-spacing:0.3px;
+    font-weight:600;
+    text-transform:uppercase;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="password"],
+input[type="search"]{
+    width:100%;
+    padding:12px 14px;
+    margin-bottom:16px;
+    border-radius:10px;
+    border:1px solid transparent;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    color:#fff;
+    outline:none;
+    transition: box-shadow .14s ease, transform .12s ease, border-color .12s ease;
+    box-shadow: inset 4px 0 0 0 rgba(255,255,255,0.02);
+    font-size:15px;
+}
+
+/* subtle placeholder color */
+input::placeholder{ color: rgba(255,255,255,0.35); }
+
+/* accent-left bar via box-shadow */
+input#inputName{ box-shadow: inset 6px 0 0 0 rgba(110,231,183,0.08); }
+input#inputNumber{ box-shadow: inset 6px 0 0 0 rgba(96,165,250,0.08); }
+
+/* Focus state */
+input:focus{
+    transform: translateY(-2px);
+    box-shadow:
+        0 6px 18px rgba(2,6,23,0.5),
+        inset 6px 0 0 0 rgba(96,165,250,0.12);
+    border-radius:12px;
+}
+
+/* Submit button */
+button[type="submit"]{
+    display:inline-block;
+    background: linear-gradient(90deg, var(--accent-2), var(--accent));
+    color: #04202b;
+    border:none;
+    padding:12px 18px;
+    border-radius:999px;
+    font-weight:700;
+    cursor:pointer;
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+    box-shadow: 0 8px 24px rgba(12,18,34,0.45);
+    letter-spacing:0.6px;
+}
+button[type="submit"]:hover{ transform: translateY(-3px) scale(1.01); filter:brightness(1.03); }
+button[type="submit"]:active{ transform: translateY(-1px) scale(.995); }
+
+/* Search input */
+#findContact{
+    width:100%;
+    max-width:520px;
+    padding:12px 14px;
+    margin-top:4px;
+    margin-bottom:12px;
+    border-radius:12px;
+    background: var(--soft);
+    border:1px solid rgba(255,255,255,0.03);
+    color:#fff;
+    outline:none;
+    transition: box-shadow .12s ease, transform .12s ease;
+}
+#findContact:focus{ box-shadow:0 8px 30px rgba(2,6,23,0.6); transform:translateY(-2px); }
+
+/* Heading for contacts */
+b{
+    display:block;
+    margin-top:12px;
+    font-size:16px;
+    color:#fff;
+    letter-spacing:0.4px;
+}
+
+/* Contact list container: select sibling after bold */
+b + div{
+    width:100%;
+    max-width:520px;
+    display:grid;
+    gap:10px;
+    margin-top:12px;
+}
+
+/* Individual contact card: match structure where each contact is a div with a p inside */
+b + div > div{
+    padding:12px 14px;
+    border-radius:10px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.03);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+b + div > div:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 18px 36px rgba(2,6,23,0.6);
+}
+
+/* Contact text */
+b + div > div p{
+    margin:0;
+    font-size:15px;
+    color:var(--muted);
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+}
+b + div > div p > :first-child { font-weight:700; color:#fff; }
+b + div > div p > :last-child { color: rgba(255,255,255,0.75); font-feature-settings: "tnum"; }
+
+/* No results state */
+b + div > p{
+    margin:10px 0;
+    color:rgba(255,255,255,0.45);
+    padding:12px;
+    border-radius:10px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));
+    border:1px dashed rgba(255,255,255,0.03);
+    text-align:center;
+}
+
+/* Scrollbar for contact list & body */
+*::-webkit-scrollbar{ height:10px; width:10px; }
+*::-webkit-scrollbar-thumb{
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    border-radius:10px;
+}
+*::-webkit-scrollbar-track{ background: transparent; }
+
+/* Responsive */
+@media (max-width:560px){
+    form, #findContact, b + div { max-width:100%; padding:18px; }
+    body{ padding:20px; align-items:flex-start; }
+    button[type="submit"]{ width:100%; }
+}

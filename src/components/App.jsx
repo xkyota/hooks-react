@@ -13,7 +13,24 @@ const App = () => {
 		console.log(object);
 
 		setContacts([...contacts, object]);
+
+		document.getElementById("inputName").value = ''; 
+		document.getElementById("inputNumber").value = ''; 
 	};
+
+	const [query, setQuery] = useState("");
+
+	const handleSearch = (e) => {
+		setQuery(e.target.value);
+	};
+
+	const filteredContacts = contacts.filter((c) => {
+		const q = query.trim().toLowerCase();
+		return (
+			(c.name && c.name.toLowerCase().includes(q)) ||
+			(c.phone && c.phone.toLowerCase().includes(q))
+		);
+	});
 
 	return (
 		<>
@@ -41,16 +58,28 @@ const App = () => {
 				<button type="submit">Add contact</button>
 			</form>
 
-			<b>Contacts:</b>
+			<p>Search contact:</p>
+			<input
+				type="text"
+				id="findContact"
+				value={query}
+				onChange={handleSearch}
+				placeholder="Search by name or phone"
+			/>
 
+			<b>All Contacts:</b>
 			<div>
-				{contacts.map((contact) => (
-					<div>
-						<p>
-							{contact.name}: {contact.phone}
-						</p>
-					</div>
-				))}
+				{filteredContacts.length === 0 ? (
+					<p>No contacts found.</p>
+				) : (
+					filteredContacts.map((contact, idx) => (
+						<div>
+							<p>
+								{contact.name}: {contact.phone}
+							</p>
+						</div>
+					))
+				)}
 			</div>
 		</>
 	);
